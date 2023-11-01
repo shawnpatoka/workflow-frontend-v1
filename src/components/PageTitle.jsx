@@ -1,5 +1,3 @@
-import './pageTitle.css'
-
 function PageTitle({ title }) {
   return (
     <>
