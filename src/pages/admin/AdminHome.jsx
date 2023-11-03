@@ -27,7 +27,7 @@ function AdminHome() {
           </div>
           <div className="col-md-12">
             <Card>
-              <h2>Tomorrows's Work Orders</h2>
+              <h2>Tomorrow's Work Orders</h2>
               <AdminWorkOrderList isTomorrow={true} />
             </Card>
           </div>
