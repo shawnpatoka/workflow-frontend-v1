@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Spinner from './Spinner'
 import AlertAdminNoWorkOrders from './AlertAdminNoWorkOrders'
+import { Link } from 'react-router-dom'
 
 function AdminWorkOrderList({ isTomorrow }) {
   const [workOrderList, setWorkOrderList] = useState([])
@@ -16,7 +17,7 @@ function AdminWorkOrderList({ isTomorrow }) {
       "assignee": "Corey Trevorson",
       "time_start": "9:00am",
       "time_end": "12:30pm",
-      "link": "#"
+      "link": "LOC-1"
     },
     {
       "id": "2",
@@ -25,7 +26,7 @@ function AdminWorkOrderList({ isTomorrow }) {
       "assignee": "Bob Vila",
       "time_start": "9:00am",
       "time_end": "12:30pm",
-      "link": "#"
+      "link": "LOC-2"
     },
     {
       "id": "3",
@@ -34,7 +35,7 @@ function AdminWorkOrderList({ isTomorrow }) {
       "assignee": "Randy Lahey",
       "time_start": "9:00am",
       "time_end": "12:30pm",
-      "link": "#"
+      "link": "LOC-3"
     },
     {
       "id": "4",
@@ -43,7 +44,7 @@ function AdminWorkOrderList({ isTomorrow }) {
       "assignee": "Rick Sanchez",
       "time_start": "9:00am",
       "time_end": "12:30pm",
-      "link": "#"
+      "link": "LOC-4"
     },
     {
       "id": "5",
@@ -52,7 +53,7 @@ function AdminWorkOrderList({ isTomorrow }) {
       "assignee": "Corey Trevorson",
       "time_start": "9:00am",
       "time_end": "12:30pm",
-      "link": "#"
+      "link": "LOC-5"
     },
   ]
 
@@ -95,9 +96,10 @@ function AdminWorkOrderList({ isTomorrow }) {
           </div>
           <div className="work-order-cell">{workOrder.assignee}</div>
           <div className="work-order-cell">{workOrder.time_start} - {workOrder.time_end}</div>
-          <div className="work-order-cell text-end"><a href="" class="btn btn-regular btn-light">View</a></div>
-        </div>
-      )}
+          <div className="work-order-cell text-end"><Link to={"/work-order/" + workOrder.link} className="btn btn-regular btn-light">View</Link></div>
+        </div >
+      )
+      }
       {(isTomorrow && !isLoading) && <AlertAdminNoWorkOrders />}
 
     </>

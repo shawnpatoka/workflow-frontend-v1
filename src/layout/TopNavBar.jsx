@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Logo from "../assets/Logo"
 
 function TopNavBar() {
@@ -8,9 +9,7 @@ function TopNavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <a href="#">
-          <Logo isDarkMode={false} />
-        </a>
+        <Link to='/'><Logo isDarkMode={false} /></Link>
 
         <i className="bi bi-person-circle"></i>
       </div>
