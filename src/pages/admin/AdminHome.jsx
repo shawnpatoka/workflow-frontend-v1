@@ -1,6 +1,7 @@
 import PageTitle from '../../components/PageTitle'
 import Card from '../../components/Card'
 import AdminWorkOrderList from '../../components/AdminWorkOrderList'
+import CircularProgress from '../../components/CircularProgress'
 
 
 function AdminHome() {
@@ -17,6 +18,11 @@ function AdminHome() {
           <div className="col-md-7">
             <Card>
               <h2>Work Orders by Status</h2>
+              <div className="d-flex justify-content-between">
+                <CircularProgress value={55} color="#ffa626" statusName="Open" />
+                <CircularProgress value={33} color="#2e88bf" statusName="In Progress" />
+                <CircularProgress value={12} color="#15ba95" statusName="Ready for Review" />
+              </div>
             </Card>
           </div>
           <div className="col-md-5">
