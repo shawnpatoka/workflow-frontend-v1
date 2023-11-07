@@ -5,13 +5,17 @@ function TopNavBar() {
   return (
     <nav className="navbar bg-white-full fixed-top p-0" style={{ height: '50px' }}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+
+        <button className="btn btn-regular btn-transparent">
+          <i className="bi btn-small bi-list" style={{ fontSize: '1.25rem' }}></i>
         </button>
 
         <Link to='/'><Logo isDarkMode={false} /></Link>
 
-        <i className="bi bi-person-circle"></i>
+
+        <button className="btn btn-regular btn-transparent">
+          <i className="bi bi-person-circle" style={{ fontSize: '1.25rem', color: '#a3a3a3' }}></i>
+        </button>
       </div>
     </nav>
   )

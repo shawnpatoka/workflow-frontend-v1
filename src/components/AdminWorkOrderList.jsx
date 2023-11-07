@@ -96,11 +96,14 @@ function AdminWorkOrderList({ isTomorrow }) {
           </div>
           <div className="work-order-cell">{workOrder.assignee}</div>
           <div className="work-order-cell">{workOrder.time_start} - {workOrder.time_end}</div>
-          <div className="work-order-cell text-end"><Link to={"/work-order/" + workOrder.link} className="btn btn-regular btn-light">View</Link></div>
+          <div className="work-order-cell text-end"><Link to={"/work-order/" + workOrder.link} className="btn btn-regular-wide btn-light mt-2 mt-sm-0">View</Link></div>
         </div >
       )
       }
       {(isTomorrow && !isLoading) && <AlertAdminNoWorkOrders />}
+
+
+
 
     </>
   )
