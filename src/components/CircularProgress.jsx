@@ -1,4 +1,13 @@
+import { useEffect } from "react"
+
 function CircularProgress({ value, color, statusName }) {
+
+  useEffect(() => {
+    document.addEventListener("DOMContentLoaded", function () {
+      var svg = document.querySelector('.donut');
+      svg.classList.add('animate');
+    });
+  }, [])
 
 
   const valueSet = `${value} ${100 - value}`

@@ -238,3 +238,17 @@ hr {
     -webkit-transform: translateY(5%);
     transform: translateY(5%);
   }
+
+
+  @keyframes elongate {
+    from {
+      stroke-dasharray: 0 1000; 
+    }
+    to {
+      stroke-dasharray: {valueSet} 1000; 
+    }
+  }
+  
+  .donut-segment {
+    animation: elongate 700ms ease-in-out forwards;
+  }
