@@ -223,3 +223,18 @@ hr {
 
 
 
+/* doughtnut chart */
+
+.chart-text {
+    fill: #50575c;
+}
+
+.chart-number {
+    font-size: .35rem;
+    line-height: 1;
+    text-anchor: middle;
+    -moz-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    -webkit-transform: translateY(5%);
+    transform: translateY(5%);
+  }
