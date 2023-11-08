@@ -15,7 +15,7 @@ function AdminHome() {
     <>
       <PageTitle title="Dashboard" />
       <div className="container">
-        <div className="row">
+        <div className="row d-flex align-self-stretch">
           <div className="col-md-7">
             <Card>
               <h2>Work Orders by Status</h2>
@@ -32,6 +32,8 @@ function AdminHome() {
               <DayOfWeekChart />
             </Card>
           </div>
+        </div>
+        <div className="row">
           <div className="col-md-12">
             <Card>
               <h2>Today's Work Orders</h2>
@@ -46,8 +48,11 @@ function AdminHome() {
           </div>
         </div>
       </div>
+
     </>
   )
 }
 
 export default AdminHome
+
+
