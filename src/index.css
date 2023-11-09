@@ -58,6 +58,15 @@ h1 {
     font-weight: 100;
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.1rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+  }
 
 
 
@@ -282,4 +291,10 @@ hr {
   
   .donut-segment {
     animation: elongate 700ms ease-in-out;
+  }
+
+  /* helpers */
+
+  .sticky-sm-top {
+    top: 75px;
   }
