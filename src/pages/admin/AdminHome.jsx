@@ -14,11 +14,12 @@ function AdminHome() {
   return (
     <>
       <PageTitle title="Dashboard" />
+
       <div className="container">
-        <div className="row d-flex align-self-stretch">
-          {/* start left column */}
-          <div className="col-md-7">
-            <div className="card mt-3" style={{ minHeight: '235px' }}>
+
+        <div className="row mt-3">
+          <div className="col-12 col-md-7 d-flex">
+            <div className="card flex-fill">
               <div className="card-body">
                 <h2>Work Orders by Status</h2>
                 <div className="row">
@@ -29,18 +30,17 @@ function AdminHome() {
               </div>
             </div>
           </div>
-          {/* end left column */}
-          {/* start right column */}
-          <div className="col-md-5">
-            <div className="card mt-3" style={{ minHeight: '235px' }}>
+          <div className="col-12 col-md-5 d-flex mt-3 mt-md-0">
+            <div className="card flex-fill">
               <div className="card-body">
                 <h2>7-Day Users' Work Order Count</h2>
                 <DayOfWeekChart />
+
               </div>
             </div>
           </div>
-          {/* end right */}
         </div>
+
         <div className="row">
           <div className="col-md-12">
             <Card>
@@ -55,7 +55,7 @@ function AdminHome() {
             </Card>
           </div>
         </div>
-      </div>
+      </div >
 
     </>
   )
