@@ -42,11 +42,11 @@ function WorkOrderDetail() {
                 </div>
                 <div className="col-md-4 mt-3 mt-md-0">
                   <label htmlFor="updateStatus">Update Status</label>
-                  <select className="form-select mt-2" aria-label="Default select example">
-                    <option selected>Open</option>
-                    <option value="1">In Progress</option>
-                    <option value="2">Ready For Review</option>
-                    <option value="3">Review Complete</option>
+                  <select className="form-select mt-2" defaultValue={2}>
+                    <option value="1">Open</option>
+                    <option value="2">In Progress</option>
+                    <option value="3">Ready For Review</option>
+                    <option value="4">Review Complete</option>
                   </select>
                 </div>
               </div>
@@ -76,12 +76,12 @@ function WorkOrderDetail() {
                 </div>
                 <div className="col-md-12">
                   <label>Job Description</label>
-                  <div class="input-group mt-2">
-                    <input type="file" name="images2" class="form-control" accept="image/*" multiple />
-                    <button type="submit" hx-encoding="multipart/form-data" class="btn btn-outline-secondary text-capitalize" id="upload-button" >Upload</button>
+                  <div className="input-group mt-2">
+                    <input type="file" name="images2" className="form-control" accept="image/*" multiple />
+                    <button type="submit" hx-encoding="multipart/form-data" className="btn btn-outline-secondary text-capitalize" id="upload-button" >Upload</button>
                   </div>
                   <div className="alert alert-info mt-3 text-center">
-                    <i class="bi bi-card-image me-1"></i> No Photos Uploaded
+                    <i className="bi bi-card-image me-1"></i> No Photos Uploaded
                   </div>
                 </div>
 
