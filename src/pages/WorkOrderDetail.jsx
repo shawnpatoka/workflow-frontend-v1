@@ -76,15 +76,14 @@ function WorkOrderDetail() {
                 </div>
                 <div className="col-md-12">
                   <label>Job Description</label>
-                  <div class="input-group mt-2">
-                    <input type="file" name="images2" class="form-control" accept="image/*" multiple />
-                    <button type="submit" hx-encoding="multipart/form-data" class="btn btn-outline-secondary text-capitalize" id="upload-button" >Upload</button>
+                  <div className="input-group mt-2">
+                    <input type="file" name="images2" className="form-control" accept="image/*" multiple />
+                    <button type="submit" hx-encoding="multipart/form-data" className="btn btn-outline-secondary text-capitalize" id="upload-button" >Upload</button>
                   </div>
                   <div className="alert alert-info mt-3 text-center">
-                    <i class="bi bi-card-image me-1"></i> No Photos Uploaded
+                    <i className="bi bi-card-image me-1"></i> No Photos Uploaded
                   </div>
                 </div>
-
               </div>
             </Card>
           </div>
