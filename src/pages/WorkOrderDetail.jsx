@@ -42,11 +42,11 @@ function WorkOrderDetail() {
                 </div>
                 <div className="col-md-4 mt-3 mt-md-0">
                   <label htmlFor="updateStatus">Update Status</label>
-                  <select className="form-select mt-2" aria-label="Default select example">
-                    <option selected>Open</option>
-                    <option value="1">In Progress</option>
-                    <option value="2">Ready For Review</option>
-                    <option value="3">Review Complete</option>
+                  <select className="form-select mt-2" defaultValue={2}>
+                    <option value="1">Open</option>
+                    <option value="2">In Progress</option>
+                    <option value="3">Ready For Review</option>
+                    <option value="4">Review Complete</option>
                   </select>
                 </div>
               </div>
