@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Spinner from './Spinner'
 import AlertAdminNoWorkOrders from './AlertAdminNoWorkOrders'
 import { Link } from 'react-router-dom'
+import StatusIndicator from '../components/StatusIndicator'
+
 
 function AdminWorkOrderList({ isTomorrow }) {
   const [workOrderList, setWorkOrderList] = useState([])
@@ -91,7 +93,8 @@ function AdminWorkOrderList({ isTomorrow }) {
       {!isLoading && workOrderList.map((workOrder) =>
         <div className="work-order-row" key={workOrder.id}>
           <div className="work-order-cell work-order-cell-lg">
-            <div className={setStatusColor(workOrder.status)}></div>
+            {/* <div className={setStatusColor(workOrder.status)}></div> */}
+            <StatusIndicator type="dot" status={workOrder.status} />
             <span style={{ fontWeight: '500' }}>{workOrder.location}</span>
           </div>
           <div className="work-order-cell">{workOrder.assignee}</div>

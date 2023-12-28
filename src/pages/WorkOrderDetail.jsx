@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import PageTitle from '../components/PageTitle'
 import Card from '../components/Card'
+import StatusIndicator from "../components/StatusIndicator";
 
 function WorkOrderDetail() {
   const { slug } = useParams();
@@ -104,7 +105,7 @@ function WorkOrderDetail() {
                   <label>Assigned To</label>
                   <p>Corey Trevorson</p>
                   <label>Current Status</label>
-                  <div className="status-rectangle bg-status-open">Open</div>
+                  <StatusIndicator type="rectangle" status="in_progress" />
                 </div>
                 <div className="info-group">
                   <h2>Activity</h2>
