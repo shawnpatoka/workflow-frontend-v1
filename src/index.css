@@ -43,7 +43,9 @@ body {
     background-color: #eaf3f8;
     color: #2e77a4;
 }
+
 /* font styles */
+
 h1, h2, h3, h4, h5, p, ul li {
     font-family: 'avenir', sans-serif;
 }
@@ -98,10 +100,67 @@ color: #696b6d;
 font-weight: 300;
 }
 
+#sideNavBar h5 {
+    font-size: 1.125rem;
+}
+
+#sideNavBar p {
+    margin: 0 0 0 0;
+    font-size: .9rem;
+    color: #8b9095;
+    line-height: .9rem;
+}
+
+
+/* layout */
+
+
+.top-bar {
+    width: auto;
+    height: 50px;
+    background: #ffffff;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.sidenavbar {
+    background-color: #edf2f5;
+    top: 0;
+    left: 0;
+    width: 350px;
+    transform: translateX(-100%);
+}
+
+
+/* sidenavbar styles */
+
+#sideNavBar ul {
+    padding: 15px 0 0 0;
+    list-style: none;
+}
+
+#sideNavBar ul li a {
+    background-color: #ffffff;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #404247;
+    transition: border-right 100ms ease-in-out;
+}
+
+#sideNavBar ul li a:hover {
+    background-color: #fafafa;
+    color: #404247;
+    border-right: 6px solid #3498d5;
+}
+
+
 
 
 
 /* button sizes */
+
 
 .btn {
     border: none;
@@ -132,16 +191,15 @@ font-weight: 300;
 /* button colors */
 
 
-
 .btn-transparent {
     background-color: transparent;
-    color: #555563;
+    color: #505862;
     font-weight: 700;
 }
 
 .btn-transparent:hover {
-    background-color: #dbdbdb;
-    color: #6d6d6d;
+    background-color: #f5f5f5;
+    color: #434b54;
 }
 
 .btn-light {
@@ -169,7 +227,9 @@ font-weight: 300;
     color: #495761;
 }
 
+
 /* button animation */
+
 
 .animated-button {
     position: relative;
@@ -183,13 +243,13 @@ font-weight: 300;
   
   .animated-button .hover-text {
     position: absolute;
-    top: -50%; /* Initially placed above the button */
+    top: -50%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 0;
-    transition: opacity 0.3s ease, top 0.3s ease; /* Added opacity transition */
+    transition: opacity 0.3s ease, top 0.3s ease;
     white-space: nowrap;
-    opacity: 0; /* Initially hidden */
+    opacity: 0; 
   }
   
   .animated-button:hover .original-text {
@@ -197,12 +257,14 @@ font-weight: 300;
   }
   
   .animated-button:hover .hover-text {
-    opacity: 1; /* Show the hover text */
-    top: 22%; /* Vertically center */
-    /* margin-top: -8px; */
+    opacity: 1;
+    top: 22%; 
+
   }
 
+
 /* components */
+
 
 .card {
     border: none;
@@ -226,6 +288,17 @@ font-weight: 300;
 
 .work-order-cell-lg {
     flex-grow: 2; 
+}
+
+.profile-icon {
+    color:#909090;
+    transition: color .15s ease;
+    font-size: 1.25rem;
+}
+
+.profile-icon:hover {
+    color:#a7a7a7;
+    transition: color .15s ease;
 }
 
 @media (max-width: 575.98px) {
@@ -259,7 +332,16 @@ font-weight: 300;
     border-radius: 3px;
 }
 
+.usercard-h {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #dbe2e8;
+    padding: 1rem 0;
+}
+
+
 /* page title */
+
 
 .page-title-container {
     position: relative;
@@ -307,8 +389,8 @@ hr {
 }
 
 
-
 /* doughtnut chart */
+
 
 .chart-text {
     fill: #50575c;
