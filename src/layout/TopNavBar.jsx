@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import Logo from "../assets/Logo"
+import { useAuth } from "../context/AuthContext"
+
 
 function TopNavBar() {
+  const { user, logout } = useAuth()
 
 
   return (
@@ -17,9 +20,9 @@ function TopNavBar() {
       <div data-bs-toggle="dropdown" aria-expanded="false" className="profile-icon"><i className="bi bi-person-circle"></i></div>
       <ul className="dropdown-menu">
         <li>
-          <h6 className="dropdown-header">test@test.com</h6>
+          <h6 className="dropdown-header">{user?.emailAddress}</h6>
         </li>
-        <li><a className="dropdown-item" href="#">Sign Out</a></li>
+        <li><a className="dropdown-item" onClick={logout}>Sign Out</a></li>
       </ul>
 
     </nav>

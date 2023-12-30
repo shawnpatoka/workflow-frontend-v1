@@ -27,15 +27,15 @@ function WorkOrderCreate() {
   ];
 
   const jobSites = [
-    { id: 1, clientId: 1, name: 'Chicago - River North' },
-    { id: 2, clientId: 1, name: 'Chicago - Streeterville' },
-    { id: 3, clientId: 1, name: 'Chicago - Lincoln Park' },
-    { id: 4, clientId: 2, name: 'Fort Myers - North' },
-    { id: 5, clientId: 2, name: 'Fort Myers - South' },
-    { id: 6, clientId: 2, name: 'Bonita Springs' },
-    { id: 7, clientId: 3, name: 'Bonita Springs' },
-    { id: 8, clientId: 3, name: 'Naples' },
-    { id: 9, clientId: 3, name: 'Miami - North' },
+    { id: 1, clientId: 1, name: '(Coastal Bites) Chicago - River North' },
+    { id: 2, clientId: 1, name: '(Coastal Bites) Chicago - Streeterville' },
+    { id: 3, clientId: 1, name: '(Coastal Bites) Chicago - Lincoln Park' },
+    { id: 4, clientId: 2, name: '(Fusion Flavors) Fort Myers - North' },
+    { id: 5, clientId: 2, name: '(Fusion Flavors) Fort Myers - South' },
+    { id: 6, clientId: 2, name: '(Fusion Flavors) Bonita Springs' },
+    { id: 7, clientId: 3, name: '(Savory Haven) Bonita Springs' },
+    { id: 8, clientId: 3, name: '(Savory Haven) Naples' },
+    { id: 9, clientId: 3, name: '(Savory Haven) Miami - North' },
   ];
 
   // State to manage selected client and job sites
@@ -43,10 +43,8 @@ function WorkOrderCreate() {
   const [selectedJobSite, setSelectedJobSite] = useState("")
   const [filteredJobSites, setFilteredJobSites] = useState([])
   const [personName, setPersonName] = useState([])
-  const [age, setAge] = useState('')
 
 
-  // Function to handle client selection
   const handleClientChange = (clientId) => {
     setSelectedJobSite("")
     setSelectedClient(clientId);
@@ -59,12 +57,9 @@ function WorkOrderCreate() {
       target: { value },
     } = event;
     setPersonName(
-      // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
-
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;

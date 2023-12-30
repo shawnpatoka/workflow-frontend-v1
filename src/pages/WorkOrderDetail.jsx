@@ -1,10 +1,20 @@
 import { useParams } from "react-router-dom"
+import { useState } from "react"
 import PageTitle from '../components/PageTitle'
 import Card from '../components/Card'
 import StatusIndicator from "../components/StatusIndicator";
+import FormControl from '@mui/material/FormControl';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+
 
 function WorkOrderDetail() {
   const { slug } = useParams();
+  const [newStatus, setNewStatus] = useState('in_progress')
   return (
     <>
       <PageTitle title="SapphireSpoon Cafe - Streeterville" />
@@ -34,21 +44,35 @@ function WorkOrderDetail() {
                   <hr />
                 </div>
                 <div className="col-md-4">
-                  <label htmlFor="workTimeStart">Time Start</label>
-                  <input type="time" className="form-control mt-2" id="workTimeStart" />
+                  <FormControl fullWidth sx={{ mt: 1 }}>
+                    <label>Scheduled Arrival Time</label>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <TimePicker sx={{ width: '100%' }} slotProps={{ textField: { size: 'small' } }} />
+                    </LocalizationProvider>
+                  </FormControl>
                 </div>
                 <div className="col-md-4 mt-3 mt-md-0">
-                  <label htmlFor="workTimeEnd">Time End</label>
-                  <input type="time" className="form-control mt-2" id="workTimeEnd" />
+                  <FormControl fullWidth sx={{ mt: 1 }}>
+                    <label>Estimated Completion Time</label>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <TimePicker sx={{ width: '100%' }} slotProps={{ textField: { size: 'small' } }} />
+                    </LocalizationProvider>
+                  </FormControl>
                 </div>
                 <div className="col-md-4 mt-3 mt-md-0">
-                  <label htmlFor="updateStatus">Update Status</label>
-                  <select className="form-select mt-2" defaultValue={2}>
-                    <option value="1">Open</option>
-                    <option value="2">In Progress</option>
-                    <option value="3">Ready For Review</option>
-                    <option value="4">Review Complete</option>
-                  </select>
+                  <FormControl fullWidth sx={{ mt: 1 }} size="small">
+                    <label>Status</label>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={newStatus}
+                      onChange={(e) => setNewStatus(e.target.value)}
+                    >
+                      <MenuItem value="open"><div style={{ display: 'inline-block', marginBottom: '1px' }}><StatusIndicator type="dot" status="open" /></div>Open</MenuItem>
+                      <MenuItem value="in_progress"><div style={{ display: 'inline-block', marginBottom: '1px' }}><StatusIndicator type="dot" status="in_progress" /></div>In Progress</MenuItem>
+                      <MenuItem value="ready_for_review"><div style={{ display: 'inline-block', marginBottom: '1px' }}><StatusIndicator type="dot" status="ready_for_review" /></div>Ready for Review</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
               <div className="row mt-5">
@@ -59,15 +83,30 @@ function WorkOrderDetail() {
                 <div className="col-md-12">
                   <label>Job Description</label>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas doloribus impedit assumenda atque provident autem praesentium, dignissimos reiciendis quod sunt vel nostrum? Blanditiis, numquam eum. Quos dolorem assumenda animi veniam?</p>
-                  <label>Job Description</label>
-                  <textarea className="form-control mt-2" rows="5">
-                  </textarea>
-                  <label className="mt-3">Work Completed</label>
-                  <textarea className="form-control mt-2" rows="5">
-                  </textarea>
-                  <label className="mt-3">Work Remaining</label>
-                  <textarea className="form-control mt-2" rows="5">
-                  </textarea>
+                  <FormControl sx={{ mt: 1, width: '100%' }} size="small">
+                    <label>Parts Used</label>
+                    <TextField
+                      id="outlined-multiline-flexible"
+                      multiline
+                      maxRows={15}
+                    />
+                  </FormControl>
+                  <FormControl sx={{ mt: 3, width: '100%' }} size="small">
+                    <label>Work Completed</label>
+                    <TextField
+                      id="outlined-multiline-flexible"
+                      multiline
+                      maxRows={15}
+                    />
+                  </FormControl>
+                  <FormControl sx={{ mt: 3, width: '100%' }} size="small">
+                    <label>Work Remaining</label>
+                    <TextField
+                      id="outlined-multiline-flexible"
+                      multiline
+                      maxRows={15}
+                    />
+                  </FormControl>
                 </div>
               </div>
               <div className="row mt-4">
@@ -105,7 +144,7 @@ function WorkOrderDetail() {
                   <label>Assigned To</label>
                   <p>Corey Trevorson</p>
                   <label>Current Status</label>
-                  <StatusIndicator type="rectangle" status="in_progress" />
+                  <StatusIndicator type="rectangle" status={newStatus} />
                 </div>
                 <div className="info-group">
                   <h2>Activity</h2>

@@ -15,7 +15,7 @@ function AdminHome() {
     <>
       <PageTitle title="Dashboard" />
 
-      <div className="container">
+      <div className="container mb-4">
 
         <div className="row mt-3">
           <div className="col-12 col-md-7 d-flex">
