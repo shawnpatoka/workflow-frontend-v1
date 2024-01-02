@@ -1,5 +1,6 @@
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 import UserCardH from "../components/UserCardH"
-import { useAuth } from "../context/AuthContext";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import FeedRoundedIcon from '@mui/icons-material/FeedRounded';
 import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
@@ -14,7 +15,7 @@ function SideNavBar() {
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div className="offcanvas-body pt-0">
-        {user && (<UserCardH fullName={user.firstName + " " + user.lastName} emailAddress={user.emailAddress} />)}
+        {user && (<UserCardH fullName={user.first_name + " " + user.last_name} emailAddress={user.email} />)}
         {!user && (
           <div className="alert alert-info mt-3">
             You are not logged in.<br />

@@ -33,7 +33,7 @@ function AdminHome() {
           <div className="col-12 col-md-5 d-flex mt-3 mt-md-0">
             <div className="card flex-fill">
               <div className="card-body">
-                <h2>7-Day Users' Work Order Count</h2>
+                <h2>7-Day Job Site Count</h2>
                 <DayOfWeekChart />
 
               </div>
