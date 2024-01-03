@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 const Login = () => {
 
   const [fieldEmail, setFieldEmail] = useState('dev@shawnpatoka.com')
-  const [fieldPassword, setFieldPassword] = useState('Tech@135')
+  const [fieldPassword, setFieldPassword] = useState('12345')
   const [loading, setLoading] = useState(false)
 
   const { user, setUser, setAccessToken, setCSRFToken } = useAuth()
