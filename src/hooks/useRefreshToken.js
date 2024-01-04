@@ -10,7 +10,7 @@ const useRefreshToken = () => {
         });
         setAuth(prev => {
             console.log("PREVIOUS STATE:", JSON.stringify(prev));
-            console.log("NEW TOKEN", response.data.access);
+            // console.log("NEW TOKEN", response.data.access);
             return {
                 ...prev,
                 roles: response.data.roles,

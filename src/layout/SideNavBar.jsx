@@ -4,9 +4,10 @@ import FeedRoundedIcon from '@mui/icons-material/FeedRounded';
 import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
 import { Link } from "react-router-dom";
-
+import useAuth from "../hooks/useAuth";
 
 function SideNavBar() {
+  const { userInfo } = useAuth()
 
   return (
     <div className="offcanvas sidenavbar" tabIndex="-1" id="sideNavBar" aria-labelledby="sideNavBarLabel">
@@ -14,8 +15,7 @@ function SideNavBar() {
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div className="offcanvas-body pt-0">
-        <UserCardH fullName="Shawn Patoka" emailAddress="blah@sasdf.com" />
-        <br />
+        <UserCardH fullName={`${userInfo?.firstName + " " + userInfo?.lastName}`} emailAddress={userInfo?.email} />
         <ul>
           <li data-bs-dismiss="offcanvas">
             <Link to="/" exact="true">

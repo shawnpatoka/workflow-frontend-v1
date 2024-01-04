@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefreshToken from '../hooks/useRefreshToken';
 import useAuth from '../hooks/useAuth';
+import LoadingBar from '../components/LoadingBar'
+
 
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,8 +33,8 @@ const PersistLogin = () => {
   }, [])
 
   useEffect(() => {
-    console.log(`isLoading: ${isLoading}`)
-    console.log(`aT: ${JSON.stringify(auth?.accessToken)}`)
+    // console.log(`isLoading: ${isLoading}`)
+    // console.log(`aT: ${JSON.stringify(auth?.accessToken)}`)
   }, [isLoading])
 
   return (
@@ -40,7 +42,7 @@ const PersistLogin = () => {
       {!persist
         ? <Outlet />
         : isLoading
-          ? <p>Loading...</p>
+          ? <LoadingBar />
           : <Outlet />
       }
     </>

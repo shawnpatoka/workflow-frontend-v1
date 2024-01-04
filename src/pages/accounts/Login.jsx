@@ -11,7 +11,7 @@ import useRefreshToken from "../../hooks/useRefreshToken";
 const LOGIN_URL = '/login'
 
 const Login = () => {
-  const { setAuth, persist, setPersist } = useAuth();
+  const { setAuth, persist, handleSetUserInfo } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,8 +20,8 @@ const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState('dev@shawnpatoka.com');
-  const [pwd, setPwd] = useState('Tech@135');
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
 
   const refresh = useRefreshToken()
@@ -44,10 +44,11 @@ const Login = () => {
           withCredentials: true
         }
       );
-      console.log(JSON.stringify(response?.data));
-      console.log(JSON.stringify(response));
+      // console.log(JSON.stringify(response?.data));
+      // console.log(JSON.stringify(response));
       const { accessToken, roles, firstName, lastName } = response?.data
       setAuth({ user, pwd, firstName, lastName, roles, accessToken });
+      handleSetUserInfo(user, firstName, lastName)
       setUser('');
       setPwd('');
 
@@ -114,7 +115,6 @@ const Login = () => {
                     <button className="btn btn-large btn-primary">Login to API</button>
                   </div>
                 </form>
-                <button onClick={() => refresh()} className="btn btn-large btn-outline-secondary mt-2">Refresh</button>
               </div>
             </div>
           </div>

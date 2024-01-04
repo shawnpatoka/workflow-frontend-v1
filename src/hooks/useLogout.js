@@ -2,9 +2,10 @@ import { axiosPrivate } from "../utils/axios";
 import useAuth from "./useAuth";
 
 const useLogout = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, handleUserLogout } = useAuth();
 
     const logout = async () => {
+        handleUserLogout()
         setAuth({});
         try {
             const response = await axiosPrivate.post('/logout', {
