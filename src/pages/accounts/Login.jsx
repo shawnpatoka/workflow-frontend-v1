@@ -1,51 +1,76 @@
-import { useState, useEffect } from "react";
-import { axiosInstance } from '../../utils/axios'
-import useAuth from '../../hooks/useAuth'
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth';
+import axios from '../../utils/axios'
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 
+import useRefreshToken from "../../hooks/useRefreshToken";
+
+
+const LOGIN_URL = '/login'
 
 const Login = () => {
+  const { setAuth, persist, setPersist } = useAuth();
 
-  const [fieldEmail, setFieldEmail] = useState('dev@shawnpatoka.com')
-  const [fieldPassword, setFieldPassword] = useState('12345')
-  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  const { user, setUser, setAccessToken, setCSRFToken } = useAuth()
+  const userRef = useRef();
+  const errRef = useRef();
 
-  const navigate = useNavigate()
-  const location = useLocation()
-  const fromLocation = location?.state?.from?.pathname || '/'
+  const [user, setUser] = useState('dev@shawnpatoka.com');
+  const [pwd, setPwd] = useState('Tech@135');
+  const [errMsg, setErrMsg] = useState('');
 
-  const handleLogin = async () => {
+  const refresh = useRefreshToken()
 
-    setLoading(true)
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
 
+  useEffect(() => {
+    setErrMsg('');
+  }, [user, pwd])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axiosInstance.post('/login', JSON.stringify({
-        email: fieldEmail,
-        password: fieldPassword
-      }))
-      setAccessToken(response?.data?.access_token)
-      setCSRFToken(response.headers["x-csrftoken"])
-      setFieldEmail('')
-      setFieldPassword('')
-      setLoading(false)
+      const response = await axios.post(LOGIN_URL,
+        JSON.stringify({ email: user, password: pwd }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+      console.log(JSON.stringify(response));
+      const { accessToken, roles, firstName, lastName } = response?.data
+      setAuth({ user, pwd, firstName, lastName, roles, accessToken });
+      setUser('');
+      setPwd('');
 
+      navigate(from, { replace: true });
 
-      window.location.href = fromLocation;
-    } catch (error) {
-      setLoading(false)
-      // TODO: handle errors
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg('No Server Response');
+      } else if (err.response?.status === 400) {
+        setErrMsg('Missing Username or Password');
+      } else if (err.response?.status === 401) {
+        setErrMsg('Unauthorized');
+      } else {
+        setErrMsg('Login Failed');
+      }
+      errRef.current.focus();
     }
   }
 
 
   useEffect(() => {
-    console.log("current user from login page:", user)
-  }, [])
-
+    localStorage.setItem("persist", persist);
+  }, [persist])
 
 
   return (
@@ -56,21 +81,40 @@ const Login = () => {
         <div className="row justify-content-center">
 
           <div className="col-lg-6">
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
 
             <div className="card">
               <div className="card-body">
-                <h2>API Login</h2>
-                <FormControl fullWidth sx={{ mt: 1 }}>
-                  <label>Login</label>
-                  <TextField id="outlined-basic" variant="outlined" value={fieldEmail} onChange={(e) => setFieldEmail(e.target.value)} />
-                </FormControl>
-                <FormControl fullWidth sx={{ mt: 2 }}>
-                  <label>Password</label>
-                  <TextField id="outlined-basic" variant="outlined" type="password" value={fieldPassword} onChange={(e) => setFieldPassword(e.target.value)} />
-                </FormControl>
-                <div className="d-flex mt-3">
-                  <button onClick={handleLogin} className="btn btn-large btn-primary">Login to API</button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                  <h2>API Login</h2>
+                  <FormControl fullWidth sx={{ mt: 1 }}>
+                    <label htmlFor="username">Username</label>
+                    <TextField
+                      variant="outlined"
+                      id="username"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setUser(e.target.value)}
+                      value={user}
+                      required
+                    />
+                  </FormControl>
+                  <FormControl fullWidth sx={{ mt: 2 }}>
+                    <label htmlFor="password">Password</label>
+                    <TextField
+                      variant="outlined"
+                      type="password"
+                      id="password"
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={pwd}
+                      required
+                    />
+                  </FormControl>
+                  <div className="d-flex mt-3">
+                    <button className="btn btn-large btn-primary">Login to API</button>
+                  </div>
+                </form>
+                <button onClick={() => refresh()} className="btn btn-large btn-outline-secondary mt-2">Refresh</button>
               </div>
             </div>
           </div>

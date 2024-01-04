@@ -1,44 +1,17 @@
-import { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
-import useAxiosPrivate from '../hooks/useAxiosPrivate'
-import useRefreshToken from '../hooks/useRefreshToken'
-import Spinner from '../components/Spinner'
-import LoadingBar from '../components/LoadingBar'
+import { useLocation, Navigate, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
-function PrivateRoute() {
-
-    const refresh = useRefreshToken()
-    const { accessToken, setUser } = useAuth()
-    const [loading, setLoading] = useState(true)
-    const axiosPrivate = useAxiosPrivate()
-
-    useEffect(() => {
-
-        let isMounted = true
-
-        async function verifyUser() {
-            try {
-                await refresh()
-                const { data } = await axiosPrivate.get('/user')
-                setUser(data)
-            } catch (error) {
-                // console.log(error?.response)
-            } finally {
-                isMounted && setLoading(false)
-            }
-        }
-
-        !accessToken ? verifyUser() : setLoading(false)
-
-        return () => {
-            isMounted = false
-        }
-    }, [])
+const RequireAuth = ({ allowedRoles }) => {
+    const { auth } = useAuth();
+    const location = useLocation();
 
     return (
-        loading ? <LoadingBar /> : <Outlet />
-    )
+        auth?.roles?.find(role => allowedRoles?.includes(role))
+            ? <Outlet />
+            : auth?.accessToken
+                ? (<Navigate to="/unauthorized" state={{ from: location }} replace />)
+                : <Navigate to="/login" state={{ from: location }} replace />
+    );
 }
 
-export default PrivateRoute
+export default RequireAuth;

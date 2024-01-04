@@ -3,11 +3,16 @@ import Card from '../../components/Card'
 import AdminWorkOrderList from '../../components/AdminWorkOrderList'
 import CircularProgress from '../../components/CircularProgress'
 import DayOfWeekChart from '../../components/DayOfWeekChart'
+import { useEffect } from 'react'
+import useAuth from '../../hooks/useAuth'
 
 
 function AdminHome() {
 
 
+  useEffect(() => {
+
+  }, [])
 
 
 
