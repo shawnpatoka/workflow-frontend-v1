@@ -20,8 +20,8 @@ const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [user, setUser] = useState('dev@shawnpatoka.com');
+  const [pwd, setPwd] = useState('Tech@135');
   const [errMsg, setErrMsg] = useState('');
 
   const refresh = useRefreshToken()

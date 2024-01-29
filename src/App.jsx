@@ -7,6 +7,7 @@ import Unauthorized from "./pages/accounts/Unauthorized";
 import PrivateRoute from './utils/PrivateRoute'
 import Layout from "./layout/Layout";
 import PersistLogin from "./utils/PersisLogin";
+import PrivatePage from "./pages/admin/PrivatePage";
 
 const ROLES = {
   'admin': 12345
@@ -28,6 +29,7 @@ function App() {
               <Route path="/work-order/create" element={<WorkOrderCreate />} />
             </Route>
           </Route>
+          <Route path="/private" element={<PrivatePage />} />
 
         </Route>
       </Routes>

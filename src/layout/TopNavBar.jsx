@@ -27,6 +27,7 @@ function TopNavBar() {
 
 
       <Link to='/'><Logo isDarkMode={false} /></Link>
+      <Link to="private">Private Route</Link>
 
 
 

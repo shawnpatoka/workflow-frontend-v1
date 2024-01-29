@@ -21,14 +21,14 @@ function DayOfWeekChart() {
     Tooltip,
   );
 
-  const labels = ['Stellar Bloom', 'Sapphire Spoon', 'Zephyr Forge', 'Pinnacle Paws'];
+  const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   const data = {
     labels,
     datasets: [
       {
         label: 'Count of work orders',
-        data: [2, 10, 3, 7],
+        data: [2, 10, 3, 7, 5, 2, 4],
         backgroundColor: '#5aaadb',
       },
     ],
