@@ -9,33 +9,6 @@ import AdminWorkOrderListToday from '../../components/AdminWorkOrderListToday'
 import AdminWorkOrderListTomorrow from '../../components/AdminWorkOrderListTomorrow'
 
 function AdminHome() {
-  const [workOrdersToday, setWorkOrdersToday] = useState([])
-  const [workOrdersTomorrow, setWorkOrdersTomorrow] = useState([])
-  const [errMsg, setErrMsg] = useState("")
-
-
-  useEffect(() => {
-
-    const getTomorrowWorkOrders = async () => {
-      try {
-        const response = await axiosPrivate('http://127.0.0.1:8000/api/v1/work-orders/tomorrow');
-
-        if (response.status === 200) {
-          const data = await response.data
-          setWorkOrdersTomorrow(data);
-          setErrMsg("")
-        }
-
-      } catch (error) {
-        setErrMsg(`${error.message}`)
-      }
-    }
-
-    getTomorrowWorkOrders()
-
-  }, [])
-
-
 
   return (
     <>

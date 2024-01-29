@@ -10,7 +10,7 @@ function PrivatePage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axiosPrivate('http://127.0.0.1:8000/api/v1/user');
+        const response = await axiosPrivate('/user');
 
         if (response.status === 200) {
           const data = await response.data
